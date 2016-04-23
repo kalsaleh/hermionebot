@@ -1,6 +1,9 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 
+/** Use Hermione LUIS model for the root dialog. */
+var model = 'https://api.projectoxford.ai/luis/v1/application?id=3e971f61-3f7f-4530-8c18-b101cf66c691&subscription-key=06b59642a973401097f347da3e7cd20f';
+
 // Get secrets from server environment
 var botConnectorOptions = { 
     appId: process.env.BOTFRAMEWORK_APPID, 
