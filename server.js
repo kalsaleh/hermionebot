@@ -136,8 +136,12 @@ var data = {
     useCase: 'You would use an Operator to do something to your variables.'
   },
   'Function': {
-    description: 'A function is a block of code designed to perform a particular task',
-    snippet: 'function myFunction(p1,p2){ return p1*p2;// The function returns the product of p1 and p2}',
+    description: 'A function is a block of code designed to perform a particular task.',
+    snippet: {
+      JavaScript: "var helloWorld = function() {\n" + "  console.log('Hello World');\n" + "}",
+      Ruby: "def hello_world\n" + "  puts 'Hello World'\nend",
+      Python: "def hello_world\n" + "  print 'Hello World'"
+    },
     useCase: 'You call a function when you want the program to execute a particular task',
   },
   'Variable': {
