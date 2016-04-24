@@ -47,6 +47,8 @@ function askTopic(session, args, next) {
         topic = builder.EntityRecognizer.findBestMatch(data, topicEntity.entity);
         if (languageEntity) {
           language = builder.EntityRecognizer.findBestMatch(data, languageEntity.entity);
+        } else {
+          
         }
     } else if (session.dialogData.topic) {
         // Just multi-turn over the existing Topic
@@ -56,10 +58,10 @@ function askTopic(session, args, next) {
     // Prompt the user to pick a topic if they didn't specify a valid one.
     if (!topic) {
         // Lets see if the user just asked for a topic we don't know about.
-        var txt = entity ? session.gettext(prompts.topicUnknown, { topic: entity.entity }) : prompts.topicMissing;
+        var topicText = entity ? session.gettext(prompts.topicUnknown, { topic: entity.entity }) : prompts.topicMissing;
 
         // Prompt the user to pick a topic from the list. They can also ask to cancel the operation.
-        builder.Prompts.choice(session, txt, data);
+        builder.Prompts.choice(session, topicText, data);
     } else {
         // Great! pass the Topic to the next step in the waterfall which will answer the question.
         // * This will match the format of the response returned from Prompts.choice().
