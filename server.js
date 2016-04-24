@@ -127,7 +127,7 @@ var data = {
     useCase: 'A hash is useful when you have a set of data that you want to organize by categories. In that case, you can set the categories as keys, and the data falling into that category can be the value.'
   },
   'Operator': {
-    description: 'JavaScript has Operators that perform assignments, arithemtic, comparisons, and much more!',
+    description: 'Operators in code perform assignments, arithemtic, comparisons, and much more!',
     snippet: {
   		JavaScript: 'voteable = (age < 18) ? "Too young":"Old enough";',
   		Ruby: 'puts 1 < 2 ? "One is less than two!" : "One is not less than two."',

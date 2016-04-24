@@ -1,5 +1,5 @@
 module.exports = {
-  helloMessage: "Hello, I'm Hermione, the smartest person in the world",
+  helloMessage: "Hello, I'm Hermione, the smartest person in the world!",
 
   helpMessage: "I can answer your programming questions! Here are just some of the questions I can answer for you:\n\n" +
   "* 'What is an array?'\n" +
