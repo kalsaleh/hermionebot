@@ -31,13 +31,19 @@ function askTopic(session, args, next) {
     // First check to see if we either got a topic from LUIS or have a an existing topic
     // that we can multi-turn over.
     var topic;
-    var entity = builder.EntityRecognizer.findEntity(args.entities, 'Topic');
-    if (entity) {
+    var language;
+    var topicEntity = builder.EntityRecognizer.findEntity(args.entities, 'Topic');
+    var languageEntity = builder.EntityRecognizer.findEntity(args.entities, 'Language');
+
+    if (topicEntity) {
         // The user specified a topic so lets look it up to make sure its valid.
         // * This calls the underlying function Prompts.choice() uses to match a users response
         //   to a list of choices. When you pass it an object it will use the intents as the
         //   list of choices to match against.
-        topic = builder.EntityRecognizer.findBestMatch(data, entity.entity);
+        topic = builder.EntityRecognizer.findBestMatch(data, topicEntity.entity);
+        if (languageEntity) {
+          language = builder.EntityRecognizer.findBestMatch(data, languageEntity.entity);
+        }
     } else if (session.dialogData.topic) {
         // Just multi-turn over the existing Topic
         topic = session.dialogData.topic;
@@ -46,14 +52,14 @@ function askTopic(session, args, next) {
     // Prompt the user to pick a topic if they didn't specify a valid one.
     if (!topic) {
         // Lets see if the user just asked for a topic we don't know about.
-        var txt = entity ? session.gettext(prompts.topicUnknown, { topic: entity.entity }) : prompts.topicUnknown;
+        var txt = entity ? session.gettext(prompts.topicUnknown, { topic: entity.entity }) : prompts.topicMissing;
 
         // Prompt the user to pick a topic from the list. They can also ask to cancel the operation.
         builder.Prompts.choice(session, txt, data);
     } else {
         // Great! pass the Topic to the next step in the waterfall which will answer the question.
         // * This will match the format of the response returned from Prompts.choice().
-        next({ response: topic })
+        next({ response: {topic: topic, language: language} })
     }
 }
 
@@ -63,9 +69,11 @@ function answerQuestion(field, answerTemplate) {
         // can be null.
         if (results.response) {
             // Save topic for multi-turn case and compose answer
-            var topic = session.dialogData.topic = results.response;
-            var language = 'ruby';
-            var answer = { topic: topic.entity, value: data[topic.entity][field][language] };
+            var topic = session.dialogData.topic = results.response.topic;
+            var language = session.dialogData.language = results.response.language;
+            var answer = { topic: topic.entity, language: language.entity, value: data[topic.entity][field][language.entity] };
+            console.log(language);
+            console.log(data[topic.entity][field]);
             session.send(answerTemplate, answer);
         } else {
             session.send(prompts.cancel);
@@ -93,15 +101,19 @@ var data = {
   'Array': {
     description: 'An array is an ordered collection of objects. An array can contain several types of objects at once, such as integers, floats, strings, even other arrays or more complex objects.',
     snippet:  {
-        ruby: '["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]',
-        javascript: 'javascript array',
-        python: 'python array'
+        Ruby: '["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]',
+        JavaScript: '["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]',
+        Python: '["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]'
     },
     useCase: 'An array is useful when you simply need to store a list of objects, without needing the added complexity of something like a hash.'
   },
   'Hash': {
     description: 'A hash is a collection of key-value pairs.',
-    snippet: '{"a": "apple", "b": "banana", "c": ["cat", "canary"], "d": 42}',
+    snippet: {
+      Ruby: '{"a": "apple", "b": "banana", "c": ["cat", "canary"], "d": 42}',
+      JavaScript: '{"a": "apple", "b": "banana", "c": ["cat", "canary"], "d": 42}',
+      Python: '{"a": "apple", "b": "banana", "c": ["cat", "canary"], "d": 42}'
+    },
     useCase: 'A hash is useful when you have a set of data that you want to organize by categories. In that case, you can set the categories as keys, and the data falling into that category can be the value.'
   },
   'Operator': {
@@ -113,5 +125,8 @@ var data = {
     description: 'is a block of code designed to perform a particular task',
     snippet: 'function myFunction(p1,p2){ return p1*p2;// The function returns the product of p1 and p2}',
     useCase: 'call a function when you want the program to execute a particular task',
-  }
+  },
+  'Ruby': 'Ruby',
+  'Python': 'Python',
+  'JavaScript': 'JavaScript'
 };

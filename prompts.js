@@ -10,6 +10,6 @@ module.exports = {
   topicMissing: "I didn't catch that, what topic did you want to know about?",
   cancel: "If you insist.",
   answerDescription: "%(value)s",
-  answerSnippet: "Here's an example of %(topic)s: \n %(value)s",
+  answerSnippet: "Here's an example of %(topic)s in %(language)s: \n %(value)s",
   answerUseCase: "You would use %(topic)s in this case: \n%(value)s."
 };
