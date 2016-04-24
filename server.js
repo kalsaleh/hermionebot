@@ -117,6 +117,15 @@ var data = {
     },
     useCase: 'An array is useful when you simply need to store a list of objects, without needing the added complexity of something like a hash.'
   },
+  'Iterator': {
+    description: 'An iterator is way to process all the items in a list.',
+    snippet: {
+      Ruby: 'orders.each do |order| print order end',
+      JavaScript: 'for (var counter = 1; counter < 6; counter++) { console.log(counter);',
+      Python: 'for line in open("a.txt"): print line'
+    },
+    useCase: 'Iterators can loop through a collection of orders or items and execute a block of code.'
+  },
   'Hash': {
     description: 'A hash is a collection of key-value pairs.',
     snippet: {
