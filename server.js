@@ -122,7 +122,11 @@ var data = {
   },
   'Operator': {
     description: 'JavaScript has Operators that perform assignments, arithemtic, comparisons, and much more!',
-    snippet: 'voteable = (age < 18) ? "Too young":"Old enough";',
+    snippet: {
+		JavaScript: 'voteable = (age < 18) ? "Too young":"Old enough";',
+		Ruby: 'puts 1 < 2 ? "One is less than two!" : "One is not less than two."',
+		Python: '>>> msg = "Hello %s" % name if name else "gimme your name"'
+	},
     useCase: 'You would use an Operator to do something to your variables.'
   },
   'Function': {
