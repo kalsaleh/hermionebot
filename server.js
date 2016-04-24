@@ -45,13 +45,6 @@ function askTopic(session, args, next) {
         //   to a list of choices. When you pass it an object it will use the intents as the
         //   list of choices to match against.
         topic = builder.EntityRecognizer.findBestMatch(data, topicEntity.entity);
-        if (languageEntity) {
-          language = builder.EntityRecognizer.findBestMatch(data, languageEntity.entity);
-          console.log(languageEntity.entity);
-        } else {
-          language = builder.EntityRecognizer.findBestMatch(data, 'javascript');
-          console.log("defaulting to javascript");
-        }
     } else if (session.dialogData.topic) {
         // Just multi-turn over the existing Topic
         topic = session.dialogData.topic;
@@ -67,9 +60,15 @@ function askTopic(session, args, next) {
     } else {
         // Great! pass the Topic to the next step in the waterfall which will answer the question.
         // * This will match the format of the response returned from Prompts.choice().
-        next({ response: {topic: topic, language: language} })
+        next({ response: topic })
     }
 }
+
+function askLanguage() {
+  // session.userData.language = results.response;
+  // builder.Prompts.choice(session, "What language?", ["Ruby", "JavaScript", "Python"]);
+  return 'Ruby';
+};
 
 function answerQuestion(field, answerTemplate) {
     return function (session, results) {
@@ -77,12 +76,14 @@ function answerQuestion(field, answerTemplate) {
         // can be null.
         if (results.response) {
             // Save topic for multi-turn case and compose answer
-            var topic = session.dialogData.topic = results.response.topic;
-            var language = session.dialogData.language = results.response.language;
-            var answer = { topic: topic.entity, language: language.entity, value: ( data[topic.entity][field][language.entity] || data[topic.entity][field] ) };
-            console.log(language);
-            console.log("Value");
-            console.log(data[topic.entity][field]);
+            var topic = session.dialogData.topic = results.response;
+            if (field == "snippet") {
+              var language = askLanguage();
+              var answer = { topic: topic.entity, value: data[topic.entity][field][language], language: language};
+            }
+            else {
+              var answer = { topic: topic.entity, value: data[topic.entity][field] };
+            }
             session.send(answerTemplate, answer);
         } else {
             session.send(prompts.cancel);
