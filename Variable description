@@ -1,0 +1,7 @@
+var data = {
+  'Variables': {
+      description: "Variables save values when you are coding. We do this by defining a variable with a specific, case-sensitive name. Once you create (or declare) a variable as having a particular name, you can then call up that value by typing the variable name."
+      snippit: 'var myAge = 24,  myAge/2=12 ',
+      useCase: 'But how do we use it? It is useful to think that any time you type the name of a variable, you are asking the computer to swap out the variable name and swap in the value of the variable.'
+
+  },
