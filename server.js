@@ -79,8 +79,9 @@ function answerQuestion(field, answerTemplate) {
             // Save topic for multi-turn case and compose answer
             var topic = session.dialogData.topic = results.response.topic;
             var language = session.dialogData.language = results.response.language;
-            var answer = { topic: topic.entity, language: language.entity, value: data[topic.entity][field][language.entity] };
+            var answer = { topic: topic.entity, language: language.entity, value: ( data[topic.entity][field][language.entity] || data[topic.entity][field] ) };
             console.log(language);
+            console.log("Value");
             console.log(data[topic.entity][field]);
             session.send(answerTemplate, answer);
         } else {
