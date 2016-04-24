@@ -103,5 +103,10 @@ var data = {
     description: 'JavaScript has Operators that perform assignments, arithemtic, comparisons, and much more!',
     snippet: 'voteable = (age < 18) ? "Too young":"Old enough";',
     useCase: 'You would use an Operator to do something to your variables.'
+  },
+  'Function': {
+    description: 'is a block of code designed to perform a particular task',
+    snippet: 'function myFunction(p1,p2){ return p1*p2;// The function returns the product of p1 and p2}',
+    useCase: 'call a function when you want the program to execute a particular task',
   }
 };
