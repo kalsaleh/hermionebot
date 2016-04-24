@@ -99,7 +99,7 @@ server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
 
 // Serve a static web page
 server.get(/.*/, restify.serveStatic({
-  'directory:' __dirname, 
+  directory: __dirname, 
 	'default': 'index.html'
 }));
 
