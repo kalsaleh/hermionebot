@@ -98,5 +98,5 @@ var data = {
     description: 'A hash is a collection of key-value pairs.',
     snippet: 'hash snippet',
     useCase: 'A hash is useful when you have a set of data that you want to organize by categories. In that case, you can set the categories as keys, and the data falling into that category can be the value.'
-  }
+  }  
 };

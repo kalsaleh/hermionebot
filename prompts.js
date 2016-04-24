@@ -1,5 +1,6 @@
 module.exports = {
   helloMessage: "Hello, I'm Hermione",
+
   helpMessage: "I can answer your programming questions! Here are just some of the questions I can answer for you:\n\n" +
   "* 'What is an array?'\n" +
   "* 'Show me an example of a function'\n" +
