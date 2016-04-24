@@ -142,7 +142,7 @@ var data = {
       Ruby: "def hello_world\n" + "  puts 'Hello World'\nend",
       Python: "def hello_world\n" + "  print 'Hello World'"
     },
-    useCase: 'You call a function when you want the program to execute a particular task',
+    useCase: 'You call a function when you want the program to execute a particular task.',
   },
   'Variable': {
     description: 'A variable is a container for storing data values.',
