@@ -21,6 +21,10 @@ dialog.on('Help', builder.DialogAction.send(prompts.helpMessage));
 
 dialog.on('Hello', builder.DialogAction.send(prompts.helloMessage));
 
+dialog.on('Cortana', builder.DialogAction.send(prompts.cortanaMessage));
+
+dialog.on('Siri', builder.DialogAction.send(prompts.siriMessage));
+
 dialog.on('Description', [askTopic, answerQuestion('description', prompts.answerDescription)]);
 
 dialog.on('Snippet', [askTopic, answerQuestion('snippet', prompts.answerSnippet)]);
