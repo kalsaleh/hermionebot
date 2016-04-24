@@ -64,7 +64,8 @@ function answerQuestion(field, answerTemplate) {
         if (results.response) {
             // Save topic for multi-turn case and compose answer
             var topic = session.dialogData.topic = results.response;
-            var answer = { topic: topic.entity, value: data[topic.entity][field] };
+            var language = 'ruby';
+            var answer = { topic: topic.entity, value: data[topic.entity][field][language] };
             session.send(answerTemplate, answer);
         } else {
             session.send(prompts.cancel);
@@ -91,7 +92,11 @@ server.listen(process.env.port || 3978, function () {
 var data = {
   'Array': {
     description: 'An array is an ordered collection of objects. An array can contain several types of objects at once, such as integers, floats, strings, even other arrays or more complex objects.',
-    snippet: '["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]',
+    snippet:  {
+        ruby: '["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]',
+        javascript: 'javascript array',
+        python: 'python array'
+    },
     useCase: 'An array is useful when you simply need to store a list of objects, without needing the added complexity of something like a hash.'
   },
   'Hash': {
