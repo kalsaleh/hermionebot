@@ -1,0 +1,151 @@
+.jumbotron {
+  background-color: #fd9753;
+  color: white;
+  overflow: hidden;
+}
+
+ body {
+   background-color: white;
+   font-family: 'Lato';
+ }
+
+.box {
+  background-color:
+}
+#background img {
+  width: 100%;
+}
+
+.col-md-2{
+
+  margin-top: 30px;
+}
+
+h5 {
+  text-align: center;
+  font-size: 20px;
+}
+
+h3 {
+  text-align: center;
+  font-size: 40px;
+}
+
+h4 {
+  color: white;
+  margin-top: 25px;
+  text-align: center;
+  font-size: 20px;
+}
+
+
+
+#profile {
+
+  width:30%;
+   height:30%;
+}
+
+#projects {
+  background: url(ASSETS/images/texture.jpg) no-repeat;
+  background-color: #81b9b8;
+
+  padding-bottom: 40px;
+
+
+}
+
+.image {
+  width: 300px;
+  height:130px;
+  background-color: #177f7d;
+  margin-top: 40px;
+  margin-left: 30px;
+  position: relative;
+}
+
+.nav {
+  background-color: #177c7a;
+  padding-bottom: 5px;
+  background-image: url(ASSETS/images/texture.jpg);
+}
+
+.nav ul li {
+  display:inline;
+  color: white;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.nav ul {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.main {
+  margin-top: 40px;
+  margin-bottom: 5px;
+}
+
+.hogwarts {
+
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.fill {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  color: white;
+}
+
+.basis {
+  font-size: 16px;
+  margin-bottom: 50px;
+}
+
+.privacy {
+margin: auto;
+  width: 80%;
+}
+
+.slack {
+  margin: auto;
+  width: 60%;
+
+}
+.special {
+  color: #177f7d;
+}
+
+.castle {
+  margin-top: 20px;
+}
+
+
+
+@media only screen and (min-width: 700px) {
+
+.last {
+  float: right;
+  width: 42%;
+  margin-top: 50px;
+  margin-right: 20px;
+
+}
+.castle {
+  float: left;
+  width: 50%;
+  margin-top: 20px;
+
+}
+
+}
+.gray {
+  padding-top: 4px;
+  background-color: #a7a6a6;
+}
