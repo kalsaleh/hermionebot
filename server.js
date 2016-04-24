@@ -127,18 +127,31 @@ var data = {
     useCase: 'A hash is useful when you have a set of data that you want to organize by categories. In that case, you can set the categories as keys, and the data falling into that category can be the value.'
   },
   'Operator': {
-    description: 'JavaScript has Operators that perform assignments, arithemtic, comparisons, and much more!',
+    description: 'Operators in code perform assignments, arithmetic, comparisons, and much more!',
     snippet: {
-		JavaScript: 'voteable = (age < 18) ? "Too young":"Old enough";',
-		Ruby: 'puts 1 < 2 ? "One is less than two!" : "One is not less than two."',
-		Python: '>>> msg = "Hello %s" % name if name else "gimme your name"'
-	},
+  		JavaScript: 'voteable = (age < 18) ? "Too young":"Old enough";',
+  		Ruby: 'puts 1 < 2 ? "One is less than two!" : "One is not less than two."',
+  		Python: '>>> msg = "Hello %s" % name if name else "gimme your name"'
+  	},
     useCase: 'You would use an Operator to do something to your variables.'
   },
   'Function': {
-    description: 'is a block of code designed to perform a particular task',
-    snippet: 'function myFunction(p1,p2){ return p1*p2;// The function returns the product of p1 and p2}',
-    useCase: 'call a function when you want the program to execute a particular task',
+    description: 'A function is a block of code designed to perform a particular task.',
+    snippet: {
+      JavaScript: "var helloWorld = function() {\n" + "  console.log('Hello World');\n" + "}",
+      Ruby: "def hello_world\n" + "  puts 'Hello World'\nend",
+      Python: "def hello_world\n" + "  print 'Hello World'"
+    },
+    useCase: 'You call a function when you want the program to execute a particular task.',
+  },
+  'Variable': {
+    description: 'A variable is a container for storing data values.',
+    snippet: {
+      JavaScript: 'var x = 2;',
+      Ruby: 'x = 2',
+      Python: 'x = 2'
+    },
+    useCase: "You would use a variable to store a piece of data that you want to reuse in multiple places."
   },
   'Ruby': 'Ruby',
   'Python': 'Python',

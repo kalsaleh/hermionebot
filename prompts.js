@@ -1,5 +1,5 @@
 module.exports = {
-  helloMessage: "Hello, I'm Hermione, the smartest person in the world",
+  helloMessage: "Hello, I'm Hermione, the smartest person in the world!",
 
   helpMessage: "I can answer your programming questions! Here are just some of the questions I can answer for you:\n\n" +
   "* 'What is an array?'\n" +
@@ -13,5 +13,5 @@ module.exports = {
   cancel: "If you insist.",
   answerDescription: "%(value)s",
   answerSnippet: "Here's an example of %(topic)s in %(language)s: \n ``` %(value)s ```",
-  answerUseCase: "You would use %(topic)s in this case: \n%(value)s."
+  answerUseCase: "%(value)s"
 };
