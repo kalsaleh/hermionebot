@@ -39,12 +39,12 @@ server.listen(process.env.port || 3978, function () {
 var data = {
   "Array": {
     description: "An array is an ordered collection of objects. An array can contain several types of objects at once, such as integers, floats, strings, even other arrays or more complex objects.",
-    snippit: "[0, 4, 3, 'apple', [], 4.5]",
+    snippet: "[0, 4, 3, 'apple', [], 4.5]",
     useCase: "An array is useful when you simply need to store a list of objects, without needing the added complexity of something like a hash."
   },
   "Hash": {
     description: "A hash is a collection of key-value pairs.",
-    snippit: "{'a': 'apple', 'b': 'bear', 'c': ['camel', 'cabbage'], 'd': 42}",
+    snippet: "{'a': 'apple', 'b': 'bear', 'c': ['camel', 'cabbage'], 'd': 42}",
     useCase: "A hash is useful when you have a set of data that you want to organize by categories. In that case, you can set the categories as keys, and the data falling into that category can be the value."
   }
 }
