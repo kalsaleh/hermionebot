@@ -47,8 +47,10 @@ function askTopic(session, args, next) {
         topic = builder.EntityRecognizer.findBestMatch(data, topicEntity.entity);
         if (languageEntity) {
           language = builder.EntityRecognizer.findBestMatch(data, languageEntity.entity);
+          console.log(languageEntity.entity);
         } else {
-          
+          language = builder.EntityRecognizer.findBestMatch(data, 'javascript');
+          console.log("defaulting to javascript");
         }
     } else if (session.dialogData.topic) {
         // Just multi-turn over the existing Topic
