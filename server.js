@@ -44,10 +44,18 @@ var data = {
     description: "A hash is a collection of key-value pairs.",
     snippit: "{'a': 'apple', 'b': 'bear', 'c': ['camel', 'cabbage'], 'd': 42}",
     useCase: "A hash is useful when you have a set of data that you want to organize by categories. In that case, you can set the categories as keys, and the data falling into that category can be the value."
-  }
+  },
+
   'Function': {
     description: "Is a set of statements that performs a task or calculates a value",
-    snippit:function myFunction(p1,p2) {return p1*p2;//product of p1 and p2}
-    useCase:"A function is executed when something invokes it"
+    snippit:"function myFunction(p1,p2) {return p1*p2};",
+    //product of p1 and p2}
+    useCase:"A function is executed when something invokes it",
+  },
+
+  'Operator': {
+    	description: 'JavaScript has Operators that perform assignments, arithemtic, comparisons, and much more!',
+    	snippet: 'voteable = (age < 18) ? "Too young":"Old enough";',
+    	useCase: 'You would use an Operator to do something to your variables.'
   }
 }
