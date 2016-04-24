@@ -13,5 +13,5 @@ module.exports = {
   cancel: "If you insist.",
   answerDescription: "%(value)s",
   answerSnippet: "Here's an example of %(topic)s in %(language)s: \n ``` %(value)s ```",
-  answerUseCase: "You would use %(topic)s in this case: \n%(value)s."
+  answerUseCase: "%(value)s"
 };
