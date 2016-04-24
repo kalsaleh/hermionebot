@@ -7,9 +7,9 @@ var model = 'https://api.projectoxford.ai/luis/v1/application?id=3e971f61-3f7f-4
 var dialog = new builder.LuisDialog(model);
 
 // Get secrets from server environment
-var botConnectorOptions = { 
-    appId: process.env.BOTFRAMEWORK_APPID, 
-    appSecret: process.env.BOTFRAMEWORK_APPSECRET 
+var botConnectorOptions = {
+    appId: process.env.BOTFRAMEWORK_APPID,
+    appSecret: process.env.BOTFRAMEWORK_APPSECRET
 };
 
 // Create bot
@@ -36,18 +36,18 @@ function askTopic(session, args, next) {
         // The user specified a topic so lets look it up to make sure its valid.
         // * This calls the underlying function Prompts.choice() uses to match a users response
         //   to a list of choices. When you pass it an object it will use the intents as the
-        //   list of choices to match against. 
+        //   list of choices to match against.
         topic = builder.EntityRecognizer.findBestMatch(data, entity.entity);
     } else if (session.dialogData.topic) {
         // Just multi-turn over the existing Topic
         topic = session.dialogData.topic;
     }
-    
+
     // Prompt the user to pick a topic if they didn't specify a valid one.
     if (!topic) {
         // Lets see if the user just asked for a topic we don't know about.
         var txt = entity ? session.gettext(prompts.topicUnknown, { topic: entity.entity }) : prompts.topicUnknown;
-        
+
         // Prompt the user to pick a topic from the list. They can also ask to cancel the operation.
         builder.Prompts.choice(session, txt, data);
     } else {
@@ -60,9 +60,9 @@ function askTopic(session, args, next) {
 function answerQuestion(field, answerTemplate) {
     return function (session, results) {
         // Check to see if we have a topic. The user can cancel picking a topic so IPromptResult.response
-        // can be null. 
+        // can be null.
         if (results.response) {
-            // Save topic for multi-turn case and compose answer            
+            // Save topic for multi-turn case and compose answer
             var topic = session.dialogData.topic = results.response;
             var answer = { topic: topic.entity, value: data[topic.entity][field] };
             session.send(answerTemplate, answer);
@@ -85,7 +85,7 @@ server.get(/.*/, restify.serveStatic({
 }));
 
 server.listen(process.env.port || 3978, function () {
-    console.log('%s listening to %s', server.name, server.url); 
+    console.log('%s listening to %s', server.name, server.url);
 });
 
 var data = {
@@ -98,5 +98,10 @@ var data = {
     description: 'A hash is a collection of key-value pairs.',
     snippet: '{"a": "apple", "b": "banana", "c": ["cat", "canary"], "d": 42}',
     useCase: 'A hash is useful when you have a set of data that you want to organize by categories. In that case, you can set the categories as keys, and the data falling into that category can be the value.'
-  }  
+  },
+  'Operator': {
+    description: 'JavaScript has Operators that perform assignments, arithemtic, comparisons, and much more!',
+    snippet: 'voteable = (age < 18) ? "Too young":"Old enough";',
+    useCase: 'You would use an Operator to do something to your variables.'
+  }
 };
